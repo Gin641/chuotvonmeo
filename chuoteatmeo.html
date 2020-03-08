@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mèo tuổi ...</title>
+</head>
+<body>
+<input type="button" value="catch" onclick="catch_mouse()">
+<input type="button" value="eat" onclick="eat_mouse()">
+<script>
+    let Rat = function (name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.status = true;
+        this.say = function () {
+            return ("chit chit")
+        };
+        this.setSpeed = function (speed) {
+            this.speed = speed;
+        }
+    };
+    let Cat = function (name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.sound = function () {
+            return ("meo meo")
+        };
+        this.eatRat = function (rat) {
+            if (rat.status === true){
+                this.weight = this.weight + rat.weight;
+            }
+        };
+        this.setSpeed = function (cat_speed) {
+            this.speed = cat_speed;
+        };
+        this.catchRat = function (rat) {
+            if (rat.speed < this.speed){
+                alert("mlem mlem");
+            } else {
+                alert("k đủ tốc");
+            }
+        };
+    };
+    let rat = new Rat('mouse', 10, 70);
+    let cat = new Cat('meow', 15, 80);
+    function catch_mouse() {
+        cat.catchRat(rat);
+    }
+    function eat_mouse() {
+        cat.eatRat(rat);
+    }
+</script>
+</body>
+</html>
